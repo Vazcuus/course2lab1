@@ -1,1 +1,1 @@
-# course2lab1
+# Шаблон настройки GitHub Actions
