@@ -23,6 +23,7 @@ jobs:
         with:
           tag_name: ${{ github.run_number }}
           release_name: Release ${{ github.run_number }}
+          allowUpdates: true
           draft: false
           prerelease: false
 
@@ -48,7 +49,7 @@ jobs:
     name: Release assets
     needs: create_release
     runs-on: macos-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
