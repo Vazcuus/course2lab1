@@ -56,7 +56,7 @@ jobs:
     name: Release assets
     needs: create_release
     runs-on: macos-latest
-    permissions: write-all
+    permissions: write-all #ok
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
