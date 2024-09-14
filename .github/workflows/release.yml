@@ -7,10 +7,10 @@ on:
       - feature/github_actions
 
 jobs:
+    
   create_release:
     name: Create release
     runs-on: ubuntu-latest
-    # Note this. We are going to use that in further jobs.
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     permissions: write-all
@@ -30,7 +30,7 @@ jobs:
     name: Release assets
     needs: create_release
     runs-on: ubuntu-latest
-# ok
+    permissions: write-all
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -56,7 +56,7 @@ jobs:
     name: Release assets
     needs: create_release
     runs-on: macos-latest
-
+    permissions: write-all
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
