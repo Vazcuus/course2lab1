@@ -21,8 +21,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
+          tag_name: ${{ github.ref}}
+          release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
 
@@ -33,7 +33,7 @@ jobs:
 # ok
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
         with:
           submodules: true
       - run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
@@ -47,8 +47,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url}}
-          asset_name: helloworld-0.0.${{ github.run_number }}-Linux.deb
-          asset_path: ./helloworld-0.0.${{ github.run_number }}-Linux.deb
+          asset_name: helloworld-0.0.${{ github.ref }}-Linux.deb
+          asset_path: ./helloworld-0.0.${{ github.ref }}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
 
   release_assets_macos:
@@ -58,7 +58,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
         with:
           submodules: true
       - run: brew install boost
