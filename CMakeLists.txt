@@ -58,6 +58,7 @@ endif()
 
 
 install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
+
 if (APPLE)
     set(CPACK_GENERATOR ZIP)
 else()
@@ -71,7 +72,6 @@ set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 
 set(CPACK_PACKAGE_CONTACT example@example.com)
-
 include(CPack)
 
 enable_testing()
